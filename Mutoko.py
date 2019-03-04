@@ -26,8 +26,8 @@ for entry in f:
         if a_va:
             tei.append(entry)
             count += 1
-            
             if (count == limit_results):
-            break
+                break
+
 with open("catalyticactivity.fasta", 'w') as f:
     SeqIO.write(tei, f, "fasta")
