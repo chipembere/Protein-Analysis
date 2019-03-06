@@ -42,7 +42,7 @@ try:
 except:
     #print("Argument not recognized")
     print('You entered: ' + sys.argv[1] + '\nYou should enter uniprot_sprot.xml or the path to uniprot_sprot.xml' )
-
+    sys.exit()
 #uniprot_xml = sys.argv[1]
 #f = open(uniprot_xml)
 #f = SeqIO.parse(f, "uniprot-xml")
@@ -63,7 +63,7 @@ try:
                     break
 except:
     print('You need to enter a word relating to protein function like """catabolism""".')
-
+    sys.exit
 path = sys.argv[2] + ".fasta"
 f = open(path, 'w')
 SeqIO.write(tei, f, "fasta")
@@ -96,40 +96,46 @@ with open(path, 'r') as f2:
     data = f2.read()
     #print(data)
 
-#Download Clustaw2 
-clustalw_exe = "/Users/brianmusonza/Downloads/clustalw-2.1-macosx/clustalw2" # Clustalw2 path
-#fs_file = open(sys.argv[2] + ".txt", "r")
-clustalw_cline = ClustalwCommandline(clustalw_exe, infile = path)
 
-#cline = ClustalwCommandline("clustalw2", infile="enzymes.fasta")
-assert os.path.isfile(clustalw_exe), "Clustal W executable missing"
-#clustalw_cline()
+#Use Clustaw2 for multiple sequence alignment
+try:
+      
+    clustalw_exe = "/Users/brianmusonza/Downloads/clustalw-2.1-macosx/clustalw2" # Clustalw2 path
+    #fs_file = open(sys.argv[2] + ".txt", "r")
+    clustalw_cline = ClustalwCommandline(clustalw_exe, infile = path)
+
+    #cline = ClustalwCommandline("clustalw2", infile="enzymes.fasta")
+    assert os.path.isfile(clustalw_exe), "Clustal W executable missing"
+    #clustalw_cline()
   
-stdout = clustalw_cline()
-stderr = clustalw_cline()
+    stdout = clustalw_cline()
+    stderr = clustalw_cline()
 
-align = AlignIO.read(sys.argv[2] + ".aln", "clustal")
-#print(align)
+    # Read alignment file
+    align = AlignIO.read(sys.argv[2] + ".aln", "clustal")
+    #print(align)
 
-#phylogenic tree
+    #Use dnd file to make a phylogenetic tree
+    tree = Phylo.read(sys.argv[2] + ".dnd", "newick")
+    Phylo.draw_ascii(tree)
 
-tree = Phylo.read(sys.argv[2] + ".dnd", "newick")
-Phylo.draw_ascii(tree)
-
-# this functions is used to count the most common keyword or location, 
-# this can be used to find out if a particular function only occurs in a certain location
+except:
+    print('Downlaod Clustalw2 and save it the directory with this file')
+    sys.exit()
+# This functions is used to count the most common keyword or location, 
+# which can be used to find out if a particular function only occurs in a certain location
 def Most_Common(lst): 
     data = Counter(lst)
     return data.most_common(1)[0][0]
 
-#Put the locations/keywords of the proteins in a table
+# Put the locations/keywords of the proteins in a table
 for entry in tei:
     if ("comment_subcellularlocation_location", "keywords" in entry.annotations.keys()):
         headings = ["Entry ID", "Keywords"]
         tab.header(headings)
         tab.add_row([entry.id, entry.annotations["keywords"]])
 
-        #computing the most frequent keyword/cellular location
+        # Computing the most frequent keyword/cellular location
         most_commn.append([entry.annotations["keywords"]])
         chero = [i for l in most_commn for i in l]  
         cg = [i for l in chero for i in l]
@@ -138,6 +144,9 @@ for entry in tei:
 qs = "\nThe most frequent keywords phrase or cellular location is: \n" + mst_cmn_w
 #print("\nThe most frequent keywords/location are; \n" + mst_cmn_w)        
 s = tab.draw()
+
+# Writing the table with keywords/locations
+# and the most frequent keyword or cellular location
 with open("Table_n_MstCmnKywdOrLctn.txt", 'w') as f:
     f.write(s)
     f.write(qs)
