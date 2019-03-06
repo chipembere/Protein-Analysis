@@ -25,7 +25,6 @@ r less time to run.
 Call command examples:
 
 python Proto.py uniprot_sprot.xml catabolism
-or
 python Proto.py <'path_to_uniprot_sprot.xml'> synth
 
 After calling, the program will run and search for proteins meeting the requirements
