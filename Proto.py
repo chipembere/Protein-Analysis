@@ -40,9 +40,6 @@ except:
     print('Enter uniprot_sprot.xml or the path to uniprot_sprot.xml' )
     print("For example: 'python Proto.py uniprot_sprot.xml catabolic' ")
     sys.exit()
-#uniprot_xml = sys.argv[1]
-#f = open(uniprot_xml)
-#f = SeqIO.parse(f, "uniprot-xml")
 
 '''limit the number of proteins gathered'''
 limit_results = 25
@@ -122,6 +119,8 @@ def Most_Common(lst):
 
 # Put the locations of the proteins in a table
 for entry in tei:
+    '''This is to make a table of protein and cellular location'''
+
     if ("comment_subcellularlocation_location" in entry.annotations.keys()):
         value = entry.annotations["comment_subcellularlocation_location"]
         headings = ["Entry ID", "Subcellularlocation"]
