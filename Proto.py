@@ -63,7 +63,7 @@ try:
                     break
 except:
     print('You need to enter a word relating to protein function like """catabolism""".')
-    sys.exit
+    sys.exit()
 
 path = sys.argv[2] + ".fasta"
 f = open(path, 'w')
@@ -101,7 +101,7 @@ with open(path, 'r') as f2:
 #Use Clustaw2 for multiple sequence alignment
 try:
       
-    clustalw_exe = "/Users/brianmusonza/Downloads/clustalw-2.1-macosx/clustalw2" # Clustalw2 path
+    clustalw_exe = input("Copy clustalw2 file path here, no spaces: ") # Clustalw2 path
     #fs_file = open(sys.argv[2] + ".txt", "r")
     clustalw_cline = ClustalwCommandline(clustalw_exe, infile = path)
 
@@ -121,7 +121,7 @@ try:
     Phylo.draw_ascii(tree)
 
 except:
-    print('Downlaod Clustalw2 and save it the directory with this file')
+    print('Downlaod Clustalw2 and the file path when prompted')
     sys.exit()
 # This functions is used to count the most common keyword or location, 
 # which can be used to find out if a particular function only occurs in a certain location
