@@ -35,26 +35,34 @@ tab = tt.Texttable()
 most_commn = []
 
 ##path to Uniprot XML file##
+try:
+    uniprot_xml = sys.argv[1]
+    f = open(uniprot_xml)
+    f = SeqIO.parse(f, "uniprot-xml")
+except:
+    #print("Argument not recognized")
+    print('You entered: ' + sys.argv[1] + '\nYou should enter uniprot_sprot.xml or the path to uniprot_sprot.xml' )
 
-uniprot_xml = sys.argv[1]
-#comment = sys.argv[2]
-f = open(uniprot_xml)
-f = SeqIO.parse(f, "uniprot-xml")
+#uniprot_xml = sys.argv[1]
+#f = open(uniprot_xml)
+#f = SeqIO.parse(f, "uniprot-xml")
 
 #find proteins involved in some similar activity/function from Uniprot XML
-for entry in f:
-    #print(entry.annotations['keywords'])
-    if ("comment_function" in entry.annotations.keys()):
-        value = entry.annotations["comment_function"]
-        
-        new_found = [sys.argv[2] in i for i in value]
-        a_va = any(new_found)
-                
-        if a_va:
-            tei.append(entry)
-            count += 1
-            if (count == limit_results):
-                break
+try:
+    for entry in f:
+        #print(entry.annotations['keywords'])
+        if ("comment_function" in entry.annotations.keys()):
+            value = entry.annotations["comment_function"]
+            new_found = [sys.argv[2] in i for i in value]
+            a_va = any(new_found)
+                    
+            if a_va:
+                tei.append(entry)
+                count += 1
+                if (count == limit_results):
+                    break
+except:
+    print('You need to enter a word relating to protein function like """catabolism""".')
 
 path = sys.argv[2] + ".fasta"
 f = open(path, 'w')
