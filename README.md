@@ -44,10 +44,12 @@ Not:
 "C:\Program Files (x86)\ClustalW2\clustalw2.exe"
 
 Download and decompress Uniprot XML from:
+
 ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.xml.gz
 
 
 Download Clustalw2 from:
+
 http://www.clustal.org/clustal2/
 
 Dependenies:
