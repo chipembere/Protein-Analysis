@@ -35,6 +35,12 @@ spaces or just drag the clustalw execution file to the terminal (if you're using
 windows, remove the quotation marks from the path then enter). After that the 
 code will write all the files mentioned above. 
 
+Linux/Mac clustalw2 path input should look like:
+
+/Users/user_name/Downloads/clustalw-2.1-macosx/clustalw2
+
+Making sure there are no spaces after the two at the end.
+
 Windows clustalw2 path input should look like:
 
 C:\Program Files (x86)\ClustalW2\clustalw2.exe
