@@ -35,7 +35,7 @@ spaces or just drag the clustalw execution file to the terminal (if you're using
 windows, remove the quotation marks from the path then enter). After that the 
 code will write all the files mentioned above. 
 
-Windows clustalw2 should look like:
+Windows clustalw2 path input should look like:
 
 C:\Program Files (x86)\ClustalW2\clustalw2.exe
 
