@@ -55,7 +55,11 @@ http://www.clustal.org/clustal2/
 Dependenies:
 
 Biopython
+
 texttable
+
+
+
 
 The output of this tool can be used to analyse proteins that a related by function and maybe point
 out a popular cellular location for a particular function.
