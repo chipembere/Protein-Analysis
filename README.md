@@ -22,9 +22,12 @@ Depending on the number of proteins to be analysed (limit_results) and the
 the word (relating to function like cata or syth) the program may take more
 r less time to run.
 
-Call command example:
+Call command examples:
 
 python Proto.py uniprot_sprot.xml catabolism
+
+or
+
 python Proto.py <'path_to_uniprot_sprot.xml'> synth
 
 After calling, the program will run and search for proteins meeting the requirements
