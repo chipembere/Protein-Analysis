@@ -22,7 +22,7 @@ Depending on the number of proteins to be analysed (limit_results) and the
 the word (relating to function like cata or syth) the program may take more
 r less time to run.
 
-Call command examples:
+Call command example:
 
 python Proto.py uniprot_sprot.xml catabolism
 python Proto.py <'path_to_uniprot_sprot.xml'> synth
@@ -33,3 +33,9 @@ spacces. After that the code will write all the files mentioned above.
 
 The files can be used to analyse proteins that a related by function and maybe point
 out a popular cellular location for a particular function.
+
+Download Uniprot XML from:
+ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.xml.gz
+
+Download Clustalw2 from:
+http://www.clustal.org/clustal2/
