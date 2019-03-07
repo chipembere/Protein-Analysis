@@ -32,7 +32,7 @@ from Bio import Phylo
 import gzip
 
 '''limit the number of proteins gathered'''
-limit_results = 5
+limit_results = 25
 tei = []
 count = 0
 tab = tt.Texttable()
