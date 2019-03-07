@@ -29,44 +29,47 @@ import os
 from Bio.Align.Applications import ClustalwCommandline
 from Bio import AlignIO
 from Bio import Phylo
-
-try:
-    '''path to Uniprot XML file'''
-    uniprot_xml = sys.argv[1]
-    f = open(uniprot_xml)
-    f = SeqIO.parse(f, "uniprot-xml")
-except:
-    print("Argument not recognized or missing")
-    print('Enter uniprot_sprot.xml or the path to uniprot_sprot.xml' )
-    print("For example: 'python Proto.py uniprot_sprot.xml catabolic' ")
-    sys.exit()
+import gzip
 
 '''limit the number of proteins gathered'''
-limit_results = 25
+limit_results = 5
 tei = []
 count = 0
 tab = tt.Texttable()
 most_commn = []
 
 try:
-    '''find proteins involved in some similar activity/function from Uniprot XML'''
-    for entry in f:
-        #print(entry.annotations['keywords'])
-        if ("comment_subcellularlocation_location" in entry.annotations.keys()):
-            if ("comment_function" in entry.annotations.keys()):
-                value = entry.annotations["comment_function"]
-                new_found = [sys.argv[2] in i for i in value]
-                a_va = any(new_found)
-                        
-                if a_va:
-                    tei.append(entry)
-                    count += 1
-                    if (count == limit_results):
-                        break
-except:
-    print('You need to enter a word relating to protein function like """catabolism""" as 3rd argument.')
-    sys.exit()
+    '''path to Uniprot XML file'''
+    uniprot_xml = sys.argv[1]
+    with gzip.open(uniprot_xml) as f:
+        f = SeqIO.parse(f, "uniprot-xml")
 
+except:
+    print("Argument not recognized or missing")
+    print('Enter uniprot_sprot.xml.gz or the path to uniprot_sprot.xml.gz' )
+    print("For example: 'python Proto.py uniprot_sprot.xml.gz catabolic'\n or\n python Proto.py <path_to_uniprot_sprot.xml.gz catabolism ")
+    sys.exit()
+with gzip.open(uniprot_xml) as f:
+    f = SeqIO.parse(f, "uniprot-xml")
+    try:
+        '''find proteins involved in some similar activity/function from Uniprot XML'''
+        for entry in f:
+            #print(entry.annotations['keywords'])
+            if ("comment_subcellularlocation_location" in entry.annotations.keys()):
+                if ("comment_function" in entry.annotations.keys()):
+                    value = entry.annotations["comment_function"]
+                    new_found = [sys.argv[2] in i for i in value]
+                    a_va = any(new_found)
+                            
+                    if a_va:
+                        tei.append(entry)
+                        count += 1
+                        if (count == limit_results):
+                            break
+    except:
+        print('You need to enter a word relating to protein function like """catabolism""" as your 3rd argument.')
+        sys.exit()
+        
 path = sys.argv[2] + ".fasta"
 f = open(path, 'w')
 SeqIO.write(tei, f, "fasta")
