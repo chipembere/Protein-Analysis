@@ -45,6 +45,7 @@ try:
         f = SeqIO.parse(f, "uniprot-xml")
 
 except:
+    '''if path is not provided'''
     print("Argument not recognized or missing")
     print('Enter uniprot_sprot.xml.gz or the path to uniprot_sprot.xml.gz' )
     print("For example: 'python Proto.py uniprot_sprot.xml.gz catabolic'\n or\n python Proto.py <path_to_uniprot_sprot.xml.gz catabolism ")
