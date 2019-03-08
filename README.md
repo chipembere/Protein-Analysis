@@ -70,3 +70,4 @@ http://www.clustal.org/clustal2/
 The output of this tool can be used to analyse proteins that a related by function and maybe point
 out a popular cellular location for a particular function. The code can be found here: https://github.com/chipembere/Protein-Analysis/blob/master/Proto.py
  
+I am still working on tests for the functions in Proto.py
