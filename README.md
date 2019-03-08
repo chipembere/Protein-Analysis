@@ -46,7 +46,9 @@ Linux/Mac clustalw2 path input should look like:
 
 /Users/user_name/Downloads/clustalw-2.1-macosx/clustalw2
 
-Making sure there are no spaces after the two at the end.
+Making sure there are no spaces after the two at the end. You can also just drag 
+and drop the the clustalw2 executable when prompted if you are on a unix system.
+Make sure you the right clustalw2 executable  for your operating system.
 
 Windows clustalw2 path input should look like:
 

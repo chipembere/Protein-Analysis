@@ -111,6 +111,7 @@ try:
 
 except:
     print('Downlaod Clustalw2 and copy the file path (without spaces) when prompted')
+    print("If you are on a unix system you can drag and drop clustalw2 executable when prompted")
     sys.exit()
 
 def Most_Common(lst):
