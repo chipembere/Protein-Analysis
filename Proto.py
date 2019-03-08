@@ -30,9 +30,6 @@ from Bio.Align.Applications import ClustalwCommandline
 from Bio import AlignIO
 from Bio import Phylo
 import gzip
-from alignment.sequence import Sequence
-from alignment.vocabulary import Vocabulary
-from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
 
 '''limit the number of proteins gathered'''
 limit_results = 25
