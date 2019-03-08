@@ -10,18 +10,18 @@ Proto.py file and change the limit_results value. The programme will ask for
 the path to clustalw2, copy the path without spaces and enter. 
 The program will write a number of files, including an aln and a text files where 
 you can view alignments. There are two alignment files, one for multiple sequence alignment
-and the other for pariwise. The outputs also include a fasta file of the selected proteins 
+and the other for pairwise with alignment scores. The outputs also include a fasta file of the selected proteins 
 and a .txt file with a table that shows the entry ID and associated cellular location 
 for each protein and at the end of that file it tells you the most common cellular 
 location (this is useful because it may highlight if a cellular process only occurs in a 
 particular cellular location). A phylogenetic tree is also printed out to the 
-command line for assesing the distance between the proteins.
+command line for assessing the distance between the proteins.
 
 Depending on the number of proteins to be analysed (limit_results) and the 
 the word (relating to function like cata or syth) the program may take more
 or less time to run.
 
-Dependenies:
+Dependencies:
 
 Biopython
 
