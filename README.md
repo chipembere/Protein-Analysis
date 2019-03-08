@@ -21,6 +21,13 @@ Depending on the number of proteins to be analysed (limit_results) and the
 the word (relating to function like cata or syth) the program may take more
 or less time to run.
 
+Dependenies:
+
+Biopython
+
+texttable
+
+
 Call command examples:
 
 python Proto.py uniprot_sprot.xml.gz catabolism
@@ -58,15 +65,8 @@ Download Clustalw2 from:
 
 http://www.clustal.org/clustal2/
 
-Dependenies:
-
-Biopython
-
-texttable
-
-
 
 
 The output of this tool can be used to analyse proteins that a related by function and maybe point
-out a popular cellular location for a particular function.
+out a popular cellular location for a particular function. The code can be found here: https://github.com/chipembere/Protein-Analysis/blob/master/Proto.py
  
