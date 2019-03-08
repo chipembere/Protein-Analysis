@@ -7,12 +7,13 @@ from Proto import Most_Common
 class ArgTest(unittest.TestCase):
     
     def setUp(self):
+        pass
+
+    def test_m_s(self):
         lst = ['a', 'a', 'c', 'b']
-        actual = self.assertEqual(Most_Common(lst))
+        actual = Most_Common(lst)
         exepected = 'a'
         self.assertEqual(actual, exepected)
-
-    #def 
 
 if __name__ == "__main__":
     unittest.main()
