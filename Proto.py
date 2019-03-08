@@ -30,6 +30,9 @@ from Bio.Align.Applications import ClustalwCommandline
 from Bio import AlignIO
 from Bio import Phylo
 import gzip
+from alignment.sequence import Sequence
+from alignment.vocabulary import Vocabulary
+from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
 
 '''limit the number of proteins gathered'''
 limit_results = 25
@@ -83,8 +86,7 @@ def seq_comp(file):
         seq1 = record1.seq
         seq2 = record2.seq
         q = open(sys.argv[2] + "2ndaln.txt", 'w')
-        for alignments in pairwise2.align.globalxx(seq1, seq2):
-            #print("Done")
+        for alignments in pairwise2.align.globalxx(seq1, seq2):          
             q.write(format_alignment(*alignments[0:]))
 
 f = open(path, 'r')
